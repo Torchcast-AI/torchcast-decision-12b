@@ -1,0 +1,13 @@
+{
+  "readout": "option-letter, one forward pass, one output token (typed-decision protocol)",
+  "letters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  "duplicate_letter_tokens": "sum probability mass of every token id that decodes to the letter",
+  "enable_thinking": false,
+  "temperature": {"choice": 1.0, "score": 1.0, "noul": 0.2},
+  "temperature_rule": {
+    "fit_set": "validation or test splits of public non-JevBench datasets (BoolQ, WANLI, MNLI, BANKING77, CLINC150, CommonsenseQA, SST-5, Yelp-5); never training data",
+    "choice_score": "NLL-optimal on the fit set over the grid 0.5-7.0 (step 0.1); Score shares the Choice temperature",
+    "noul": "highest fit-set competence (chance-corrected accuracy) on the grid [0.2, 0.3, 0.4, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0] among values whose fit-set Noul ECE <= the unmodified base model's own (0.170); 0.2 is the lowest grid value (fit-set ECE 0.167)"
+  },
+  "base_model": "google/gemma-4-12B-it@707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7"
+}
